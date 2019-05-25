@@ -2094,13 +2094,13 @@ __load_completion()
 # set up dynamic completion loading
 _completion_loader()
 {
-    if grep -F -x -q -s "${1##*/}" /etc/bash/completion.blacklist; then
-        if ! grep -F -x -q -s "${1##*/}" ~/.config/bash_completion.whitelist; then
+    if command grep -F -x -q -s "${1##*/}" /etc/bash/completion.blacklist; then
+        if ! command grep -F -x -q -s "${1##*/}" ~/.config/bash_completion.whitelist; then
             complete -F _minimal "$1" && return 124
             return 1
         fi
     fi
-    if grep -F -x -q -s "${1##*/}" ~/.config/bash_completion.blacklist; then
+    if command grep -F -x -q -s "${1##*/}" ~/.config/bash_completion.blacklist; then
         complete -F _minimal "$1" && return 124
         return 1
     fi
