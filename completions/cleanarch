@@ -6,11 +6,11 @@ _cleanarch()
     _init_completion || return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--status --dry-run --quiet --help' \
-            -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--status --dry-run --quiet --help' \
+            -- "$cur") )
     fi
 
 } &&
 complete -F _cleanarch cleanarch
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

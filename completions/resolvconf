@@ -8,14 +8,14 @@ _resolvconf()
     case $prev in
         -a|-d)
             _available_interfaces
-            return 0
+            return
             ;;
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '-a -d -u' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '-a -d -u' -- "$cur") )
     fi
 } &&
 complete -F _resolvconf resolvconf
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

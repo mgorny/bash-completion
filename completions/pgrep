@@ -6,35 +6,41 @@ _pgrep()
     _init_completion || return
 
     case $prev in
-        -c|-d|-g|-J|-M|-N|-s|-t|-T|-z)
+        --delimiter|--pgroup|--session|--terminal|-!(-*)[cdgJMNstTz])
             return
             ;;
-        -F)
+        --signal)
+            _signals
+            return
+            ;;
+        --pidfile|-!(-*)F)
             _filedir
             return
             ;;
-        -G)
+        --group|-!(-*)G)
             _gids
             return
             ;;
         -j)
-            COMPREPLY=( $( compgen -W 'any none' -- "$cur" ) )
+            COMPREPLY=( $(compgen -W 'any none' -- "$cur") )
             return
             ;;
-        -P)
+        --parent|-!(-*)P)
             _pids
             return
             ;;
-        -u|-U)
+        --euid|--uid|-!(-*)[uU])
             _uids
             return
             ;;
     esac
 
     if [[ $cur == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( "$1" --usage 2>&1 |
-            sed -e "s/\[-signal\]//" -e "s/\[-SIGNAL\]//" |
-            _parse_usage - )' -- "$cur" ) )
+        local help=$(_parse_help "$1")
+        [[ $help ]] || help='$("$1" --usage 2>&1 |
+            command sed -e "s/\[-signal\]//" -e "s/\[-SIGNAL\]//" |
+            _parse_usage -)'
+        COMPREPLY=( $(compgen -W "$help" -- "$cur") )
         [[ $cword -eq 1 && $1 == *pkill ]] && _signals -
         return
     fi
@@ -43,4 +49,4 @@ _pgrep()
 } &&
 complete -F _pgrep pgrep pkill
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

@@ -6,12 +6,13 @@ _pwck()
     _init_completion || return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_usage "$1" )' -- "$cur" ) )
-        return 0
+        local opts=$(_parse_help "$1")
+        COMPREPLY=( $(compgen -W '${opts:-$(_parse_usage "$1")}' -- "$cur") )
+        return
     fi
 
     _filedir
 } &&
 complete -F _pwck pwck
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

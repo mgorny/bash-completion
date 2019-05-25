@@ -10,22 +10,22 @@ _chsh()
 
     case $prev in
         --list-shells|--help|-v|--version)
-            return 0
+            return
             ;;
         -s|--shell)
             _shells
-            return 0
+            return
             ;;
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_usage "$1" )' -- "$cur" ) )
+        local opts=$(_parse_help "$1")
+        COMPREPLY=( $(compgen -W '${opts:-$(_parse_usage "$1")}' -- "$cur") )
     else
         _allowed_users
     fi
 
-    return 0
 } &&
 complete -F _chsh chsh
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

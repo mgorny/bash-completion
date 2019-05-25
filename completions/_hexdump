@@ -19,9 +19,8 @@ _hexdump()
     esac
 
     if [[ $cur == -* ]]; then
-        local opts="$( _parse_help "$1" )"
-        [[ $opts ]] || opts="$( _parse_usage "$1" )"
-        COMPREPLY=( $( compgen -W "$opts" -- "$cur" ) )
+        local opts="$(_parse_help "$1")"
+        COMPREPLY=( $(compgen -W '${opts:-$(_parse_usage "$1")}' -- "$cur") )
         return
     fi
 
@@ -29,4 +28,4 @@ _hexdump()
 } &&
 complete -F _hexdump hexdump hd
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

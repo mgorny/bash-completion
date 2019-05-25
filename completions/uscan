@@ -2,39 +2,32 @@
 
 _uscan()
 {
-    local cur prev split
+    local cur prev words cword split
     _init_completion -s || return
 
     case $prev in
         --package)
-            COMPREPLY=( $( _xfunc apt-cache _apt_cache_src_packages ))
-            return 0
+            COMPREPLY=( $(_xfunc apt-cache _apt_cache_src_packages))
+            return
             ;;
         --watchfile)
             _filedir
-            return 0
+            return
             ;;
         --destdir)
             _filedir -d
-            return 0
+            return
             ;;
         --timeout|--upstream-version|--download-version|--check-dirname-level|--check-dirname-regex)
             COMPREPLY=( )
-            return 0
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
-    COMPREPLY=( $( compgen -W ' --report --no-download --report-status
-    --download --destdir --force-download --pasv --no-pasv --symlink --rename
-    --repack --no-symlink --dehs --no-dehs --download-current-version --verbose
-    --no-verbose --debug --user-agent --useragent --no-conf --help
-    --version --timeout --package --upstream-version --watchfile
-    --download-version --check-dirname-level --check-dirname-regex
-    ' -- "$cur" ) )
-    return 0
+    COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
 } &&
 complete -F _uscan uscan
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

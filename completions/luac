@@ -16,7 +16,7 @@ _luac()
     esac
 
     if [[ $cur == -* ]]; then
-        COMPREPLY=( $( compgen -W "$( _parse_help "$1" )" -- "$cur" ) )
+        COMPREPLY=( $(compgen -W "$(_parse_help "$1")" -- "$cur") )
         return
     fi
 
@@ -24,4 +24,4 @@ _luac()
 } &&
 complete -F _luac luac
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

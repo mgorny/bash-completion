@@ -8,24 +8,24 @@ _list_members()
     case $prev in
         -o|--output)
             _filedir
-            return 0
+            return
             ;;
         -d|--digest)
-            COMPREPLY=( $( compgen -W 'mime plain' -- "$cur" ) )
-            return 0
+            COMPREPLY=( $(compgen -W 'mime plain' -- "$cur") )
+            return
             ;;
         -n|--nomail)
-            COMPREPLY=( $( compgen -W 'byadmin byuser bybounce unknown' \
-                -- "$cur" ) )
-            return 0
+            COMPREPLY=( $(compgen -W 'byadmin byuser bybounce unknown' \
+                -- "$cur") )
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--output --regular --digest --nomail
-            --fullnames --preserve --help' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--output --regular --digest --nomail
+            --fullnames --preserve --help' -- "$cur") )
     else
         _xfunc list_lists _mailman_lists
     fi
@@ -33,4 +33,4 @@ _list_members()
 } &&
 complete -F _list_members list_members
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

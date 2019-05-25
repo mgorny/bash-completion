@@ -10,9 +10,10 @@ usage() {
     echo
     echo "Interesting options:"
     echo "  --tool_exec=    Test against a different bash executable."
+    echo "  --buffer-size   Change expect match buffer size from our default of 20000 bytes."
     echo "  --debug         Create a dbg.log in the test directory with detailed expect match information."
     echo "  --timeout       Change expect timeout from the default of 10 seconds."
-    echo "  --debug-xtrace  Create an xtrace.log in the test directory with set -x output. Requires bash 4.1."
+    echo "  --debug-xtrace  Create an xtrace.log in the test directory with set -x output."
     echo
     echo "Example run: ./run unit/_get_cword.exp unit/compgen.exp"
 }
@@ -39,6 +40,8 @@ args=()
 while [[ $# > 0 ]]; do
     case "$1" in
         --help|--usage) usage; exit 1;;
+        --buffer-size) shift; buffer_size=$1;;
+        --buffer-size=*) buffer_size=${1/--buffer-size=};;
         --debug-xtrace) args+=(OPT_BASH_XTRACE=1);;
         --timeout) shift; timeout=$1;;
         --timeout=*) timeout=${1/--timeout=};;
@@ -54,7 +57,11 @@ while [[ $# > 0 ]]; do
     shift
 done
 
+[[ -n $buffer_size ]] && args+=("OPT_BUFFER_SIZE=$buffer_size")
 [[ -n $timeout ]] && args+=("OPT_TIMEOUT=$timeout")
 [[ -z $tool ]] && { echo "Must specify tool somehow"; exit 1; }
 
-exec runtest --outdir log --tool $tool "${args[@]}" 
+runtest --outdir log --tool $tool "${args[@]}"
+rc=$?
+[[ $rc -ne 0 && -n "$CI" ]] && cat log/$tool.log
+exit $rc

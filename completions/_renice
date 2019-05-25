@@ -24,9 +24,9 @@ _renice()
                 _pids
                 ;;
         esac
-        i=$(( ++i ))
+        (( i++ ))
     done
 } &&
 complete -F _renice renice
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

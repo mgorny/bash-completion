@@ -6,10 +6,10 @@ _hid2hci()
     _init_completion || return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--help --quiet -0 --tohci -1 --tohid' \
-            -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--help --quiet -0 --tohci -1 --tohid' \
+            -- "$cur") )
     fi
 } &&
 complete -F _hid2hci hid2hci
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

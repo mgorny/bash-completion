@@ -11,12 +11,11 @@ _kldload()
     [[ -d $moddir ]] || moddir=/boot/kernel/
 
     compopt -o filenames
-    COMPREPLY=( $( compgen -f "$moddir$cur" ) )
+    COMPREPLY=( $(compgen -f "$moddir$cur") )
     COMPREPLY=( ${COMPREPLY[@]#$moddir} )
     COMPREPLY=( ${COMPREPLY[@]%.ko} )
 
-    return 0
 } &&
 complete -F _kldload kldload
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

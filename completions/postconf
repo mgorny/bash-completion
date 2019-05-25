@@ -10,11 +10,11 @@ _postconf()
     case $prev in
         -b|-t)
             _filedir
-            return 0
+            return
             ;;
         -c)
             _filedir -d
-            return 0
+            return
             ;;
         -e)
             cur=${cur#[\"\']}
@@ -23,19 +23,17 @@ _postconf()
     esac
 
     if [[ $cur == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_usage "$1" )' -- "$cur" ) )
-        return 0
+        COMPREPLY=( $(compgen -W '$(_parse_usage "$1")' -- "$cur") )
+        return
     fi
 
-    local len=${#cur} idx=0 pval
-    for pval in $( /usr/sbin/postconf 2>/dev/null | cut -d ' ' -f 1 ); do
+    local len=${#cur} pval
+    for pval in $(/usr/sbin/postconf 2>/dev/null | cut -d ' ' -f 1); do
         if [[ "$cur" == "${pval:0:$len}" ]]; then
-            COMPREPLY[$idx]="$pval$eqext"
-            idx=$(($idx+1))
+            COMPREPLY+=( "$pval$eqext" )
         fi
     done
-    return 0
 } &&
 complete -F _postconf postconf
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

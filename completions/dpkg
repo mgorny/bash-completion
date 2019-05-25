@@ -3,7 +3,7 @@
 _have grep-status && {
 _comp_dpkg_installed_packages()
 {
-    grep-status -P -e "^$1" -a -FStatus 'install ok installed' -n -s Package
+    grep-status -P -e "^$1" -a -FStatus 'ok installed' -n -s Package
 }
 } || {
 _comp_dpkg_installed_packages()
@@ -19,7 +19,7 @@ _comp_dpkg_installed_packages()
 _have grep-status && {
 _comp_dpkg_purgeable_packages()
 {
-    grep-status -P -e "^$1" -a -FStatus 'install ok installed' -o -FStatus 'deinstall ok config-files' -n -s Package
+    grep-status -P -e "^$1" -a -FStatus 'ok installed' -o -FStatus 'ok config-files' -n -s Package
 }
 } || {
 _comp_dpkg_purgeable_packages()
@@ -32,57 +32,53 @@ _comp_dpkg_purgeable_packages()
 }
 }
 
-# Debian dpkg(8) completion
+# Debian dpkg(1) completion
 #
 _dpkg()
 {
     local cur prev words cword split
     _init_completion -s || return
 
-    _expand || return 0
-
     local i=$cword
 
     # find the last option flag
     if [[ $cur != -* ]]; then
         while [[ $prev != -* && $i -ne 1 ]]; do
-            i=$((i-1))
-            prev=${words[i-1]}
+            prev=${words[--i - 1]}
         done
     fi
 
     case $prev in
-        -c|-i|-A|-I|-f|-e|-x|-X|-W|--install|--unpack|--record-avail| \
-        --contents|--info|--fsys-tarfile|--field|--control|--extract| \
-        --show)
+        --install|--unpack|--record-avail|--contents|--info|--fsys-tarfile|\
+        --field|--control|--extract|--vextract|-!(-*)[ciAIfexW])
             _filedir '?(u|d)deb'
-            return 0
+            return
             ;;
-        -b|--build)
+        --build|-!(-*)b)
             _filedir -d
-            return 0
+            return
             ;;
-        -s|-p|-l|--status|--print-avail|--list)
-            COMPREPLY=( $( apt-cache pkgnames "$cur" 2>/dev/null ) )
-            return 0
+        --status|--print-avail|--list|--show|-!(-*)[splW])
+            COMPREPLY=( $(apt-cache pkgnames "$cur" 2>/dev/null) )
+            return
             ;;
-        -S|--search)
+        --search|-!(-*)S)
             _filedir
-            return 0
+            return
             ;;
-        -r|--remove)
-            COMPREPLY=( $( _comp_dpkg_installed_packages "$cur" ) )
-            return 0
+        --remove|--verify|-!(-*)[rV])
+            COMPREPLY=( $(_comp_dpkg_installed_packages "$cur") )
+            return
             ;;
-        -L|-P|--listfiles|--purge)
-            COMPREPLY=( $( _comp_dpkg_purgeable_packages "$cur" ) )
-            return 0
+        --listfiles|--purge|-!(-*)[LP])
+            COMPREPLY=( $(_comp_dpkg_purgeable_packages "$cur") )
+            return
             ;;
     esac
 
     $split && return
 
-    COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
     [[ $COMPREPLY == *= ]] && compopt -o nospace
 } &&
 complete -F _dpkg dpkg dpkg-deb dpkg-query
@@ -97,26 +93,26 @@ _dpkg_reconfigure()
     local opt
 
     case $prev in
-        -f|--frontend)
-        opt=( $( printf '%s\n' /usr/share/perl5/Debconf/FrontEnd/* ) )
-        opt=( ${opt[@]##*/} )
-        opt=( ${opt[@]%.pm} )
-        COMPREPLY=( $( compgen -W '${opt[@]}' -- "$cur" ) )
-        return 0
-        ;;
-        -p|--priority)
-        COMPREPLY=( $( compgen -W 'low medium high critical' -- "$cur" ) )
-        return 0
-        ;;
+        --frontend|-!(-*)f)
+            opt=( $(printf '%s\n' /usr/share/perl5/Debconf/FrontEnd/*) )
+            opt=( ${opt[@]##*/} )
+            opt=( ${opt[@]%.pm} )
+            COMPREPLY=( $(compgen -W '${opt[@]}' -- "$cur") )
+            return
+            ;;
+        --priority|-!(-*)p)
+            COMPREPLY=( $(compgen -W 'low medium high critical' -- "$cur") )
+            return
+            ;;
     esac
 
     if [[ "$cur" == -* ]]; then
         COMPREPLY=( $(compgen -W '--frontend --priority --all --unseen-only
-                      --help --showold --force --terse' -- "$cur" ) )
+            --help --showold --force --terse' -- "$cur" ) )
     else
-        COMPREPLY=( $( _comp_dpkg_installed_packages "$cur" ) )
+        COMPREPLY=( $(_comp_dpkg_installed_packages "$cur") )
     fi
 } &&
 complete -F _dpkg_reconfigure -o default dpkg-reconfigure
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

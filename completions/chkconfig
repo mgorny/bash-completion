@@ -9,23 +9,23 @@ _chkconfig()
         --level=[1-6]|[1-6]|--list|--add|--del|--override)
             _services
             _xinetd_services
-            return 0
+            return
             ;;
         --level)
-            COMPREPLY=( $( compgen -W '{1..6}' -- "$cur" ) )
-            return 0
+            COMPREPLY=( $(compgen -W '{1..6}' -- "$cur") )
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--list --add --del --override --level' \
-            -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--list --add --del --override --level' \
+            -- "$cur") )
     else
         if [[ $cword -eq 2 || $cword -eq 4 ]]; then
-            COMPREPLY=( $( compgen -W 'on off reset resetpriorities' \
-                -- "$cur" ) )
+            COMPREPLY=( $(compgen -W 'on off reset resetpriorities' \
+                -- "$cur") )
         else
             _services
             _xinetd_services
@@ -34,4 +34,4 @@ _chkconfig()
 } &&
 complete -F _chkconfig chkconfig
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

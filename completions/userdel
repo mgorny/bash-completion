@@ -6,22 +6,22 @@ _userdel()
     _init_completion || return
 
     case $prev in
-        -h|--help)
+        --help|-!(-*)h)
             return
             ;;
-        -R|--root)
+        --root|-!(-*)R)
             _filedir -d
             return
             ;;
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
-        return 0
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
+        return
     fi
 
-    COMPREPLY=( $( compgen -u -- "$cur" ) )
+    COMPREPLY=( $(compgen -u -- "$cur") )
 } &&
 complete -F _userdel userdel
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

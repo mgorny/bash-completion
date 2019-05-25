@@ -2,43 +2,39 @@
 
 _minicom()
 {
-    local cur prev words cword
-    _init_completion || return
+    local cur prev words cword split
+    _init_completion -s || return
 
     case $prev in
-        -a|-c)
-            COMPREPLY=( $( compgen -W 'on off' -- "$cur" ) )
-            return 0
+        --attrib|--color|-!(-*)[ac])
+            COMPREPLY=( $(compgen -W 'on off' -- "$cur") )
+            return
             ;;
-        -S|-C)
+        --script|--capturefile|-!(-*)[SC])
             _filedir
-            return 0
+            return
             ;;
-        -P)
-            COMPREPLY=( $( printf '%s\n' /dev/tty* ) )
-            COMPREPLY=( $( compgen -W '${COMPREPLY[@]} ${COMPREPLY[@]#/dev/}' \
-                -- "$cur" ) )
-            return 0
+        --ptty|-!(-*)p)
+            COMPREPLY=( $(printf '%s\n' /dev/tty*) )
+            COMPREPLY=( $(compgen -W '${COMPREPLY[@]} ${COMPREPLY[@]#/dev/}' \
+                -- "$cur") )
+            return
             ;;
     esac
 
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '-s -o -m -M -z -l -L -w -a -t -c -S -d -p -C
-            -T -7 -8' -- "$cur" ) )
-        return 0
-    else
-        local confdir
-        [[ -n $( command ls /etc/minirc.* 2>/dev/null ) ]] && confdir=/etc
-        [[ -n $( command ls /etc/minicom/minirc.* 2>/dev/null ) ]] \
-            && confdir=/etc/minicom
-        if [[ -n $confdir ]]; then
-            COMPREPLY=( $( compgen -W '$( printf "%s\n" $confdir/minirc.* | \
-                sed -e "s|$confdir/minirc.||")' -- "$cur" ) )
-            return 0
-        fi
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
+        [[ $COMPREPLY == *= ]] && compopt -o nospace
+        return
     fi
+
+    COMPREPLY=(
+        $(printf '%s\n' /etc/minirc.* /etc/minicom/minirc.* ~/.minirc.* \
+            | command sed -e '/\*$/d' -e 's/^.*minirc\.//' \
+            | command grep "^${cur}") )
 } &&
 complete -F _minicom -o default minicom
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

@@ -6,20 +6,20 @@ _lastlog()
     _init_completion -s || return
 
     case $prev in
-        -b|--before|-h|--help|-t|--time)
-            return 0
+        --before|--help|--time|-!(-*)@([bt]|h*))
+            return
             ;;
-        -u|--user)
-            COMPREPLY=( $( compgen -u -- "$cur" ) )
-            return 0
+        --user|-!(-*)u)
+            COMPREPLY=( $(compgen -u -- "$cur") )
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
-    COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
     [[ $COMPREPLY == *= ]] && compopt -o nospace
 } &&
 complete -F _lastlog lastlog
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

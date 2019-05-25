@@ -12,17 +12,16 @@ _ncftp()
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_help "$1" -h )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1" -h)' -- "$cur") )
         return
     fi
 
     if [[ $cword -eq 1 && -f ~/.ncftp/bookmarks ]]; then
-        COMPREPLY=( $( compgen -W '$( sed -ne "s/^\([^,]\{1,\}\),.*$/\1/p" \
-            ~/.ncftp/bookmarks )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(command sed -ne "s/^\([^,]\{1,\}\),.*$/\1/p" \
+            ~/.ncftp/bookmarks)' -- "$cur") )
     fi
 
-    return 0
 } &&
 complete -F _ncftp -o default ncftp
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

@@ -8,18 +8,18 @@ _clone_member()
     case $prev in
         -l|--listname)
             _xfunc list_lists _mailman_lists
-            return 0
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--listname --remove --admin --quiet
-            --nomodify --help' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--listname --remove --admin --quiet
+            --nomodify --help' -- "$cur") )
     fi
 
 } &&
 complete -F _clone_member clone_member
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

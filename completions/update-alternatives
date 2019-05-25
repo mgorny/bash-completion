@@ -13,7 +13,7 @@ _installed_alternatives()
             break
         fi
     done
-    COMPREPLY=( $( compgen -W '$( command ls $admindir )' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '$(command ls $admindir)' -- "$cur") )
 }
 
 _update_alternatives()
@@ -24,10 +24,10 @@ _update_alternatives()
     case $prev in
         --altdir|--admindir)
             _filedir -d
-            return 0
+            return
             ;;
         --help|--usage|--version)
-            return 0
+            return
             ;;
     esac
 
@@ -60,7 +60,7 @@ _update_alternatives()
                             _filedir
                             ;;
                         1)
-                            COMPREPLY=( $( compgen -W '--slave' -- "$cur" ) )
+                            COMPREPLY=( $(compgen -W '--slave' -- "$cur") )
                             ;;
                         3)
                             _installed_alternatives
@@ -82,11 +82,11 @@ _update_alternatives()
             _installed_alternatives
             ;;
         *)
-            COMPREPLY=( $( compgen -W '--verbose --quiet --help --version
+            COMPREPLY=( $(compgen -W '--verbose --quiet --help --version
                 --altdir --admindir --install --remove --auto --display
-                --config --set' -- "$cur" ) )
+                --config --set' -- "$cur") )
     esac
 } &&
 complete -F _update_alternatives update-alternatives alternatives
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

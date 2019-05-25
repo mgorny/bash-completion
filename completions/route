@@ -9,7 +9,7 @@ _route()
 
     if [[ $prev == dev ]]; then
         _available_interfaces
-        return 0
+        return
     fi
 
     # Remove already given options from completions
@@ -23,8 +23,8 @@ _route()
         $found || COMPREPLY[${#COMPREPLY[@]}]="$opt"
     done
 
-    COMPREPLY=( $( compgen -W '"${COMPREPLY[@]}"' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '"${COMPREPLY[@]}"' -- "$cur") )
 } &&
 complete -F _route route
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

@@ -5,7 +5,7 @@ bashcomp_DATA = 2to3 \
 		abook \
 		aclocal \
 		acpi \
-		adb \
+		_adb \
 		add_members \
 		alias \
 		ant \
@@ -16,6 +16,7 @@ bashcomp_DATA = 2to3 \
 		apt-get \
 		aptitude \
 		arch \
+		arp \
 		arping \
 		arpspoof \
 		asciidoc \
@@ -27,6 +28,7 @@ bashcomp_DATA = 2to3 \
 		autoscan \
 		avctrl \
 		badblocks \
+		bind \
 		bk \
 		brctl \
 		btdownloadheadless.py \
@@ -36,17 +38,21 @@ bashcomp_DATA = 2to3 \
 		cancel \
 		cardctl \
 		ccache \
+		ccze \
 		cfagent \
 		cfrun \
 		chage \
 		change_pw \
 		check_db \
 		check_perms \
+		checksec \
 		_chfn \
 		chgrp \
 		chkconfig \
+		chmod \
 		chown \
 		chpasswd \
+		chromium-browser \
 		chronyc \
 		chrpath \
 		_chsh \
@@ -68,10 +74,12 @@ bashcomp_DATA = 2to3 \
 		cvs \
 		cvsps \
 		dd \
+		deja-dup \
 		desktop-file-validate \
 		dhclient \
 		dict \
 		_dmesg \
+		dnssec-keygen \
 		dnsspoof \
 		dot \
 		dpkg \
@@ -82,6 +90,8 @@ bashcomp_DATA = 2to3 \
 		dumpe2fs \
 		e2freefrag \
 		e2label \
+		ebtables \
+		ecryptfs-migrate-home \
 		_eject \
 		eog \
 		ether-wake \
@@ -98,9 +108,11 @@ bashcomp_DATA = 2to3 \
 		filesnarf \
 		find \
 		find_member \
+		fio \
+		firefox \
 		flake8 \
 		freebsd-update \
-		freeciv-gtk2 \
+		freeciv \
 		freeciv-server \
 		function \
 		fusermount \
@@ -110,13 +122,19 @@ bashcomp_DATA = 2to3 \
 		genaliases \
 		gendiff \
 		genisoimage \
+		geoiplookup \
+		getconf \
 		getent \
 		gkrellm \
+		gm \
 		gnatmake \
+		gnokii \
 		gnome-mplayer \
+		gnome-screenshot \
 		gpasswd \
 		gpg \
 		gpg2 \
+		gpgv \
 		gphoto2 \
 		gprof \
 		groupadd \
@@ -134,14 +152,17 @@ bashcomp_DATA = 2to3 \
 		hping2 \
 		htop \
 		htpasswd \
+		hunspell \
 		_hwclock \
 		iconv \
 		id \
 		idn \
+		ifstat \
 		iftop \
 		ifup \
 		info \
 		inject \
+		inotifywait \
 		insmod \
 		installpkg \
 		interdiff \
@@ -154,6 +175,7 @@ bashcomp_DATA = 2to3 \
 		iptables \
 		ipv6calc \
 		iscsiadm \
+		isort \
 		isql \
 		iwconfig \
 		iwlist \
@@ -163,8 +185,12 @@ bashcomp_DATA = 2to3 \
 		jarsigner \
 		java \
 		javaws \
+		jq \
 		jpegoptim \
 		jps \
+		jshint \
+		json_xs \
+		jsonschema \
 		k3b \
 		kcov \
 		kill \
@@ -188,10 +214,13 @@ bashcomp_DATA = 2to3 \
 		list_members \
 		list_owners \
 		_look \
+		locale-gen \
 		lpq \
 		lpr \
 		lrzip \
 		lsof \
+		lsscsi \
+		lsusb \
 		lua \
 		luac \
 		luseradd \
@@ -222,9 +251,10 @@ bashcomp_DATA = 2to3 \
 		modprobe \
 		_modules \
 		monodevelop \
-		mount \
-		mount.linux \
+		_mount \
+		_mount.linux \
 		mplayer \
+		mr \
 		msynctool \
 		mtx \
 		munindoc \
@@ -233,6 +263,7 @@ bashcomp_DATA = 2to3 \
 		munin-update \
 		mussh \
 		mutt \
+		mypy \
 		mysql \
 		mysqladmin \
 		nc \
@@ -244,8 +275,12 @@ bashcomp_DATA = 2to3 \
 		ngrep \
 		nmap \
 		_nmcli \
+		nproc \
 		nslookup \
+		nsupdate \
 		ntpdate \
+		oggdec \
+		op \
 		openssl \
 		opera \
 		optipng \
@@ -253,7 +288,10 @@ bashcomp_DATA = 2to3 \
 		pack200 \
 		passwd \
 		patch \
+		pdftotext \
 		perl \
+		perlcritic \
+		perltidy \
 		pgrep \
 		pidof \
 		pine \
@@ -283,19 +321,25 @@ bashcomp_DATA = 2to3 \
 		protoc \
 		psql \
 		puppet \
+		pv \
 		pwck \
 		pwd \
 		pwdx \
 		pwgen \
+		pycodestyle \
 		pydoc \
+		pydocstyle \
 		pyflakes \
 		pylint \
+		pytest \
 		python \
+		pyvenv \
 		qdbus \
 		qemu \
 		qrunner \
 		querybts \
 		quota \
+		radvdump \
 		rcs \
 		rdesktop \
 		remove_members \
@@ -303,9 +347,9 @@ bashcomp_DATA = 2to3 \
 		_renice \
 		_repomanage \
 		reportbug \
-		reptyr \
+		_reptyr \
 		resolvconf \
-		rfkill \
+		_rfkill \
 		ri \
 		rmlist \
 		rmmod \
@@ -321,7 +365,9 @@ bashcomp_DATA = 2to3 \
 		sbcl \
 		sbopkg \
 		screen \
+		scrub \
 		sh \
+		shellcheck \
 		sitecopy \
 		slackpkg \
 		slapt-get \
@@ -348,6 +394,7 @@ bashcomp_DATA = 2to3 \
 		_svnadmin \
 		_svnlook \
 		sync_members \
+		synclient \
 		sysbench \
 		sysctl \
 		tar \
@@ -355,12 +402,15 @@ bashcomp_DATA = 2to3 \
 		tcpkill \
 		tcpnice \
 		timeout \
+		tipc \
+		tox \
 		tracepath \
 		tshark \
 		tune2fs \
 		_udevadm \
-		umount \
-		umount.linux \
+		ulimit \
+		_umount \
+		_umount.linux \
 		unace \
 		unpack200 \
 		unrar \
@@ -388,10 +438,12 @@ bashcomp_DATA = 2to3 \
 		wsimport \
 		wtf \
 		wvdial \
+		xdg-mime \
+		xdg-settings \
 		xfreerdp \
 		xgamma \
 		xhost \
-		xm \
+		_xm \
 		xmllint \
 		xmlwf \
 		xmms \
@@ -405,7 +457,8 @@ bashcomp_DATA = 2to3 \
 		ypmatch \
 		_yum \
 		yum-arch \
-		zopfli
+		zopfli \
+		zopflipng
 
 EXTRA_DIST = $(bashcomp_DATA)
 
@@ -415,10 +468,14 @@ CLEANFILES = \
 	aclocal-1.11 \
 	aclocal-1.12 \
 	aclocal-1.13 \
+	aclocal-1.14 \
+	aclocal-1.15 \
+	aclocal-1.16 \
 	alpine \
 	alternatives \
 	animate \
 	apropos \
+	aptitude-curses \
 	arm-koji \
 	asciidoc.py \
 	autoheader \
@@ -426,13 +483,19 @@ CLEANFILES = \
 	automake-1.11 \
 	automake-1.12 \
 	automake-1.13 \
+	automake-1.14 \
+	automake-1.15 \
+	automake-1.16 \
 	autossh \
 	autoupdate \
+	bsdtar \
 	btdownloadcurses.py \
 	btdownloadgui.py \
 	c++ \
 	cc \
 	cdrecord \
+	chrome \
+	chromium \
 	ci \
 	ciptool \
 	civclient \
@@ -446,6 +509,7 @@ CLEANFILES = \
 	conjure \
 	cowthink \
 	createdb \
+	createuser \
 	dcop \
 	declare \
 	dfutool \
@@ -454,34 +518,64 @@ CLEANFILES = \
 	dpkg-query \
 	dpkg-reconfigure \
 	dropdb \
+	dropuser \
 	edquota \
+	etherwake \
 	f77 \
 	f95 \
 	filebucket \
+	freeciv-gtk2 \
+	freeciv-gtk3 \
 	freeciv-sdl \
 	freeciv-xaw \
 	g++ \
+	g++-5 \
+	g++-6 \
+	g++-7 \
+	g++-8 \
 	g4 \
 	g77 \
 	g95 \
+	gcc-5 \
+	gcc-6 \
+	gcc-7 \
+	gcc-8 \
+	gccgo \
+	gccgo-5 \
+	gccgo-6 \
+	gccgo-7 \
+	gccgo-8 \
 	gcj \
+	geoiplookup6 \
 	gfortran \
+	gfortran-5 \
+	gfortran-6 \
+	gfortran-7 \
+	gfortran-8 \
 	gkrellm2 \
 	gmake \
 	gmplayer \
 	gnumake \
+	google-chrome \
+	google-chrome-stable \
 	gpc \
+	gpgv2 \
+	gtar \
 	hciattach \
 	hciconfig \
 	hd \
 	host \
 	hping \
 	hping3 \
+	iceweasel \
 	identify \
 	ifdown \
+	ifquery \
 	ifstatus \
 	import \
+	inotifywatch \
 	insmod.static \
+	iperf3 \
 	javac \
 	javadoc \
 	kplayer \
@@ -494,6 +588,7 @@ CLEANFILES = \
 	ldapmodrdn \
 	ldappasswd \
 	ldapwhoami \
+	links2 \
 	lintian-info \
 	lusermod \
 	lvchange \
@@ -511,11 +606,12 @@ CLEANFILES = \
 	mailsnarf \
 	mdecrypt \
 	mencoder \
+	micropython \
 	mkisofs \
 	mogrify \
 	montage \
+	mozilla-firefox \
 	mplayer2 \
-	mpv \
 	msgsnarf \
 	muttng \
 	ncal \
@@ -550,10 +646,23 @@ CLEANFILES = \
 	pvs \
 	pvscan \
 	pxz \
+	py.test \
+	py.test-2 \
+	py.test-3 \
 	pydoc3 \
+	pylint-2 \
+	pylint-3 \
 	pypy \
+	pypy3 \
+	pytest-2 \
+	pytest-3 \
 	python2 \
 	python3 \
+	pyvenv-3.4 \
+	pyvenv-3.5 \
+	pyvenv-3.6 \
+	pyvenv-3.7 \
+	pyvenv-3.8 \
 	qemu-kvm \
 	qemu-system-i386 \
 	qemu-system-x86_64 \
@@ -576,6 +685,7 @@ CLEANFILES = \
 	sdptool \
 	setquota \
 	sftp \
+	sidedoor \
 	slogin \
 	smbcacls \
 	smbcquotas \
@@ -585,6 +695,7 @@ CLEANFILES = \
 	smbtree \
 	sparc-koji \
 	spovray \
+	star \
 	stream \
 	sudoedit \
 	tightvncviewer \
@@ -614,317 +725,207 @@ CLEANFILES = \
 	xvnc4viewer \
 	ypcat
 
-symlinks: $(targetdir) $(DATA)
-	for file in 7za ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) 7z $(targetdir)/$$file ; \
-	done
-	for file in aclocal-1.10 aclocal-1.11 aclocal-1.12 aclocal-1.13 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) aclocal $(targetdir)/$$file ; \
-	done
-	for file in phing ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) ant $(targetdir)/$$file ; \
-	done
-	for file in asciidoc.py ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) asciidoc $(targetdir)/$$file ; \
-	done
-	for file in automake-1.10 automake-1.11 automake-1.12 automake-1.13 \
-		; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) automake $(targetdir)/$$file ; \
-	done
-	for file in autoheader ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) autoreconf $(targetdir)/$$file ; \
-	done
-	for file in autoupdate ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) autoscan $(targetdir)/$$file ; \
-	done
-	for file in btdownloadcurses.py btdownloadgui.py ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) btdownloadheadless.py $(targetdir)/$$file ; \
-	done
-	for file in lbzip2 pbzip2 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) bzip2 $(targetdir)/$$file ; \
-	done
-	for file in ncal ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) _cal $(targetdir)/$$file ; \
-	done
-	for file in pccardctl ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) cardctl $(targetdir)/$$file ; \
-	done
-	for file in compgen ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) complete $(targetdir)/$$file ; \
-	done
-	for file in mogrify display animate identify montage composite \
-		compare conjure import stream ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) convert $(targetdir)/$$file ; \
-	done
-	for file in cowthink ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) cowsay $(targetdir)/$$file ; \
-	done
-	for file in rdict ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) dict $(targetdir)/$$file ; \
-	done
-	for file in dpkg-deb dpkg-query dpkg-reconfigure ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) dpkg $(targetdir)/$$file ; \
-	done
-	for file in mailsnarf msgsnarf ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) filesnarf $(targetdir)/$$file ; \
-	done
-	for file in civclient freeciv-sdl freeciv-xaw ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) freeciv-gtk2 $(targetdir)/$$file ; \
-	done
-	for file in civserver ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) freeciv-server $(targetdir)/$$file ; \
-	done
-	for file in declare typeset ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) function $(targetdir)/$$file ; \
-	done
-	for file in cc c++ g++ gfortran f77 g77 f95 g95 gcj gpc ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) gcc $(targetdir)/$$file ; \
-	done
-	for file in mkisofs ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) genisoimage $(targetdir)/$$file ; \
-	done
-	for file in gkrellm2 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) gkrellm $(targetdir)/$$file ; \
-	done
-	for file in pigz ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) gzip $(targetdir)/$$file ; \
-	done
-	for file in sdptool l2ping rfcomm ciptool dfutool hciconfig \
-		hciattach ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) hcitool $(targetdir)/$$file ; \
-	done
-	for file in hd ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) _hexdump $(targetdir)/$$file ; \
-	done
-	for file in hping hping3 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) hping2 $(targetdir)/$$file ; \
-	done
-	for file in ifdown ifstatus ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) ifup $(targetdir)/$$file ; \
-	done
-	for file in pinfo ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) info $(targetdir)/$$file ; \
-	done
-	for file in insmod.static ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) insmod $(targetdir)/$$file ; \
-	done
-	for file in javac javadoc ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) java $(targetdir)/$$file ; \
-	done
-	for file in arm-koji ppc-koji s390-koji sparc-koji ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) koji $(targetdir)/$$file ; \
-	done
-	for file in ldapadd ldapmodify ldapdelete ldapcompare ldapmodrdn \
-		ldapwhoami ldappasswd ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) ldapsearch $(targetdir)/$$file ; \
-	done
-	for file in lintian-info ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) lintian $(targetdir)/$$file ; \
-	done
-	for file in lusermod ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) luseradd $(targetdir)/$$file ; \
-	done
-	for file in lvmdiskscan pvscan pvs pvdisplay pvchange pvcreate pvmove \
-		pvremove vgscan vgs vgdisplay vgchange vgremove vgrename \
-		vgreduce vgextend vgimport vgexport vgck vgconvert vgcreate \
-		vgcfgbackup vgcfgrestore vgmerge vgsplit vgmknodes lvscan lvs \
-		lvdisplay lvchange lvcreate lvremove lvrename lvreduce \
-		lvresize lvextend ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) lvm $(targetdir)/$$file ; \
-	done
-	for file in lz4c ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) lz4 $(targetdir)/$$file ; \
-	done
-	for file in clzip pdlzip plzip ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) lzip $(targetdir)/$$file ; \
-	done
-	for file in colormake gmake gnumake pmake ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) make $(targetdir)/$$file ; \
-	done
-	for file in apropos whatis ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) man $(targetdir)/$$file ; \
-	done
-	for file in mdecrypt ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) mcrypt $(targetdir)/$$file ; \
-	done
-	for file in mplayer2 mencoder gmplayer kplayer mpv ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) mplayer $(targetdir)/$$file ; \
-	done
-	for file in muttng ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) mutt $(targetdir)/$$file ; \
-	done
-	for file in host ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) nslookup $(targetdir)/$$file ; \
-	done
-	for file in g4 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) p4 $(targetdir)/$$file ; \
-	done
-	for file in perldoc ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) perl $(targetdir)/$$file ; \
-	done
-	for file in alpine ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) pine $(targetdir)/$$file ; \
-	done
-	for file in ping6 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) ping $(targetdir)/$$file ; \
-	done
-	for file in pkg_info pkg_deinstall ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) pkg_delete $(targetdir)/$$file ; \
-	done
-	for file in pkill ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) pgrep $(targetdir)/$$file ; \
-	done
-	for file in pm-suspend pm-suspend-hybrid ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) pm-hibernate $(targetdir)/$$file ; \
-	done
-	for file in createdb dropdb ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) psql $(targetdir)/$$file ; \
-	done
-	for file in postalias ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) postmap $(targetdir)/$$file ; \
-	done
-	for file in xpovray spovray ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) povray $(targetdir)/$$file ; \
-	done
-	for file in puppetmasterd puppetd puppetca ralsh puppetrun puppetqd \
-		filebucket puppetdoc ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) puppet $(targetdir)/$$file ; \
-	done
-	for file in pydoc3 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) pydoc $(targetdir)/$$file ; \
-	done
-	for file in pypy python2 python3 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) python $(targetdir)/$$file ; \
-	done
-	for file in dcop ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) qdbus $(targetdir)/$$file ; \
-	done
-	for file in qemu-kvm qemu-system-i386 qemu-system-x86_64 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) qemu $(targetdir)/$$file ; \
-	done
-	for file in setquota edquota quotacheck repquota quotaon quotaoff ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) quota $(targetdir)/$$file ; \
-	done
-	for file in ci co rlog rcsdiff ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) rcs $(targetdir)/$$file ; \
-	done
-	for file in rpmbuild rpmbuild-md5 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) rpm $(targetdir)/$$file ; \
-	done
-	for file in rpm2txz rpm2targz ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) rpm2tgz $(targetdir)/$$file ; \
-	done
-	for file in smbget smbcacls smbcquotas smbpasswd smbtar smbtree ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) smbclient $(targetdir)/$$file ; \
-	done
-	for file in sbcl-mt ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) sbcl $(targetdir)/$$file ; \
-	done
-	for file in slogin autossh sftp scp ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) ssh $(targetdir)/$$file ; \
-	done
-	for file in sudoedit ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) sudo $(targetdir)/$$file ; \
-	done
-	for file in tracepath6 ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) tracepath $(targetdir)/$$file ; \
-	done
-	for file in alternatives ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) update-alternatives $(targetdir)/$$file ; \
-	done
-	for file in vigr ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) vipw $(targetdir)/$$file ; \
-	done
-	for file in tightvncviewer xvnc4viewer ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) vncviewer $(targetdir)/$$file ; \
-	done
-	for file in cdrecord ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) wodim $(targetdir)/$$file ; \
-	done
-	for file in pxz ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) xz $(targetdir)/$$file ; \
-	done
-	for file in ypcat ; do \
-		rm -f $(targetdir)/$$file && \
-			$(LN_S) ypmatch $(targetdir)/$$file ; \
-	done
+symlinks: $(DATA)
+	$(ss) 7z \
+		7za
+	$(ss) aclocal \
+		aclocal-1.10 aclocal-1.11 aclocal-1.12 aclocal-1.13 \
+		aclocal-1.14 aclocal-1.15 aclocal-1.16
+	$(ss) ant \
+		phing
+	$(ss) aptitude \
+		aptitude-curses
+	$(ss) asciidoc \
+		asciidoc.py
+	$(ss) automake \
+		automake-1.10 automake-1.11 automake-1.12 automake-1.13 \
+		automake-1.14 automake-1.15 automake-1.16
+	$(ss) autoreconf \
+		autoheader
+	$(ss) autoscan \
+		autoupdate
+	$(ss) btdownloadheadless.py \
+		btdownloadcurses.py btdownloadgui.py
+	$(ss) bzip2 \
+		lbzip2 pbzip2
+	$(ss) _cal \
+		ncal
+	$(ss) cardctl \
+		pccardctl
+	$(ss) chromium-browser \
+		chrome chromium google-chrome google-chrome-stable
+	$(ss) complete \
+		compgen
+	$(ss) convert \
+		animate compare composite conjure display identify import \
+		mogrify montage stream
+	$(ss) cowsay \
+		cowthink
+	$(ss) dict \
+		rdict
+	$(ss) dpkg \
+		dpkg-deb dpkg-query dpkg-reconfigure
+	$(ss) ether-wake \
+		etherwake
+	$(ss) filesnarf \
+		mailsnarf msgsnarf
+	$(ss) firefox \
+		iceweasel mozilla-firefox
+	$(ss) freeciv \
+		civclient freeciv-gtk2 freeciv-gtk3 freeciv-sdl freeciv-xaw
+	$(ss) freeciv-server \
+		civserver
+	$(ss) function \
+		declare typeset
+	$(ss) gcc \
+		c++ cc f77 f95 g++ g++-5 g++-6 g++-7 g++-8 g77 g95 gcc-5 \
+		gcc-6 gcc-7 gcc-8 gccgo gccgo-5 gccgo-6 gccgo-7 gccgo-8 gcj \
+		gfortran gfortran-5 gfortran-6 gfortran-7 gfortran-8 gpc
+	$(ss) genisoimage \
+		mkisofs
+	$(ss) geoiplookup \
+		geoiplookup6
+	$(ss) gkrellm \
+		gkrellm2
+	$(ss) gpgv \
+		gpgv2
+	$(ss) gzip \
+		pigz
+	$(ss) hcitool \
+		ciptool dfutool hciattach hciconfig l2ping rfcomm sdptool
+	$(ss) _hexdump \
+		hd
+	$(ss) hping2 \
+		hping hping3
+	$(ss) ifup \
+		ifdown ifquery ifstatus
+	$(ss) info \
+		pinfo
+	$(ss) inotifywait \
+		inotifywatch
+	$(ss) insmod \
+		insmod.static
+	$(ss) iperf \
+		iperf3
+	$(ss) java \
+		javac javadoc
+	$(ss) koji \
+		arm-koji ppc-koji s390-koji sparc-koji
+	$(ss) ldapsearch \
+		ldapadd ldapcompare ldapdelete ldapmodify ldapmodrdn \
+		ldappasswd ldapwhoami
+	$(ss) links \
+		links2
+	$(ss) lintian \
+		lintian-info
+	$(ss) luseradd \
+		lusermod
+	$(ss) lvm \
+		lvchange lvcreate lvdisplay lvextend lvmdiskscan lvreduce \
+		lvremove lvrename lvresize lvs lvscan pvchange pvcreate \
+		pvdisplay pvmove pvremove pvs pvscan vgcfgbackup vgcfgrestore \
+		vgchange vgck vgconvert vgcreate vgdisplay vgexport vgextend \
+		vgimport vgmerge vgmknodes vgreduce vgremove vgrename vgs \
+		vgscan vgsplit
+	$(ss) lz4 \
+		lz4c
+	$(ss) lzip \
+		clzip pdlzip plzip
+	$(ss) make \
+		colormake gmake gnumake pmake
+	$(ss) man \
+		apropos whatis
+	$(ss) mcrypt \
+		mdecrypt
+	$(ss) mplayer \
+		gmplayer kplayer mencoder mplayer2
+	$(ss) mutt \
+		muttng
+	$(ss) nslookup \
+		host
+	$(ss) p4 \
+		g4
+	$(ss) perl \
+		perldoc
+	$(ss) pine \
+		alpine
+	$(ss) ping \
+		ping6
+	$(ss) pkg_delete \
+		pkg_deinstall pkg_info
+	$(ss) pgrep \
+		pkill
+	$(ss) pm-hibernate \
+		pm-suspend pm-suspend-hybrid
+	$(ss) psql \
+		createdb createuser dropdb dropuser
+	$(ss) postmap \
+		postalias
+	$(ss) povray \
+		spovray xpovray
+	$(ss) puppet \
+		filebucket puppetca puppetd puppetdoc puppetmasterd puppetqd \
+		puppetrun ralsh
+	$(ss) pytest \
+		py.test py.test-2 py.test-3 pytest-2 pytest-3
+	$(ss) pydoc \
+		pydoc3
+	$(ss) pylint \
+		pylint-2 pylint-3
+	$(ss) python \
+		micropython pypy pypy3 python2 python3
+	$(ss) pyvenv \
+		pyvenv-3.4 pyvenv-3.5 pyvenv-3.6 pyvenv-3.7 pyvenv-3.8
+	$(ss) qdbus \
+		dcop
+	$(ss) qemu \
+		qemu-kvm qemu-system-i386 qemu-system-x86_64
+	$(ss) quota \
+		edquota quotacheck quotaoff quotaon repquota setquota
+	$(ss) rcs \
+		ci co rcsdiff rlog
+	$(ss) rpm \
+		rpmbuild rpmbuild-md5
+	$(ss) rpm2tgz \
+		rpm2targz rpm2txz
+	$(ss) smbclient \
+		smbcacls smbcquotas smbget smbpasswd smbtar smbtree
+	$(ss) sbcl \
+		sbcl-mt
+	$(ss) ssh \
+		autossh scp sftp sidedoor slogin
+	$(ss) sudo \
+		sudoedit
+	$(ss) tar \
+		bsdtar gtar star
+	$(ss) tracepath \
+		tracepath6
+	$(ss) update-alternatives \
+		alternatives
+	$(ss) vipw \
+		vigr
+	$(ss) vncviewer \
+		tightvncviewer xvnc4viewer
+	$(ss) wodim \
+		cdrecord
+	$(ss) xz \
+		pxz
+	$(ss) ypmatch \
+		ypcat
 .PHONY: symlinks
 
-all-local: targetdir = .
+SETUP_SYMLINKS = $(srcdir)/../setup-symlinks.sh
+
+all-local: ss = $(SETUP_SYMLINKS) .
 all-local: symlinks
 
-install-data-local: targetdir = $(DESTDIR)$(bashcompdir)
-install-data-local: symlinks
+install-data-hook: ss = $(SETUP_SYMLINKS) $(DESTDIR)$(bashcompdir)
+install-data-hook: symlinks
+
+check-local:
+	ret=0; \
+	for file in $(bashcomp_DATA); do \
+		$${bashcomp_bash:-$${BASH:-bash}} \
+			-O extglob -n $(srcdir)/$$file || ret=$$?; \
+	done; \
+	exit $$ret

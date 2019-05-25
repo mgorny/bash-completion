@@ -3,15 +3,15 @@
 
 _lzma()
 {
-    local cur prev words cword
-    _init_completion || return
+    local cur prev words cword split
+    _init_completion -s || return
+
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '-1 -2 -3 -4 -5 -6 -7 -8 -9
-            --help --decompress --compress --keep --force --suffix --test
-            --stdout --quiet --verbose --license --list --version --small
-            --fast --best --text' -- "$cur" ) )
-        return 0
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1") -{1..9}' -- "$cur") )
+        [[ $COMPREPLY == *= ]] && compopt -o nospace
+        return
     fi
 
     local IFS=$'\n' xspec="*.@(lzma|tlz)"
@@ -24,12 +24,11 @@ _lzma()
         [[ "$prev" == -*z* ]] && xspec=
     fi
 
-    _expand || return 0
+    _tilde "$cur" || return
 
     compopt -o filenames
-    COMPREPLY=( $( compgen -f -X "$xspec" -- "$cur" ) \
-        $( compgen -d -- "$cur" ) )
+    COMPREPLY=( $(compgen -f -X "$xspec" -- "$cur") $(compgen -d -- "$cur") )
 } &&
 complete -F _lzma lzma
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

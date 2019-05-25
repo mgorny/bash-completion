@@ -6,8 +6,8 @@ _jar()
     _init_completion || return
 
     if [[ $cword -eq 1 ]]; then
-        COMPREPLY=( $( compgen -W 'c t x u' -- "$cur" ) )
-        return 0
+        COMPREPLY=( $(compgen -W 'c t x u' -- "$cur") )
+        return
     fi
 
     case ${words[1]} in
@@ -24,4 +24,4 @@ _jar()
 } &&
 complete -F _jar jar
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

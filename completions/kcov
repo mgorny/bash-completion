@@ -11,8 +11,8 @@ _kcov()
             return
             ;;
         --sort-type|-s)
-            COMPREPLY=( $( compgen -W 'filename percent reverse lines
-                uncovered' -- "$cur" ) )
+            COMPREPLY=( $(compgen -W 'filename percent reverse lines
+                uncovered' -- "$cur") )
             return
             ;;
         --include-path|--exclude-path)
@@ -33,9 +33,12 @@ _kcov()
             if [[ "$cur" == ?*,* ]]; then
                 prev="${cur%,*}"
                 cur="${cur##*,}"
-                COMPREPLY=( $( compgen -P "$prev," -W "{0..100}" -- "$cur" ) )
+                COMPREPLY=( $(compgen -W "{0..100}" -- "$cur") )
+                [[ ${#COMPREPLY[@]} -eq 1 ]] && \
+                    COMPREPLY=( ${COMPREPLY/#/$prev,} )
             else
-                COMPREPLY=( $( compgen -W "{0..100}" -- "$cur" ) )
+                COMPREPLY=( $(compgen -W "{0..100}" -- "$cur") )
+                [[ ${#COMPREPLY[@]} -eq 1 ]] && COMPREPLY=( ${COMPREPLY/%/,} )
                 compopt -o nospace
             fi
             return
@@ -49,12 +52,13 @@ _kcov()
     $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_help "$1" --help )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1" --help)' -- "$cur") )
         [[ $COMPREPLY == *= ]] && compopt -o nospace
         return
     fi
 
     _filedir
-} && complete -F _kcov kcov
+} &&
+complete -F _kcov kcov
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

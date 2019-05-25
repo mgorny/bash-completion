@@ -8,24 +8,24 @@ _nmap()
     case $prev in
         -iL|-oN|-oX|-oS|-oG|---excludefile|--resume|--stylesheet)
             _filedir
-            return 0
+            return
             ;;
         -oA|--datadir)
             _filedir -d
-            return 0
+            return
             ;;
         -e)
             _available_interfaces -a
-            return 0
+            return
             ;;
         -b|--dns-servers)
-            _known_hosts_real "$cur"
-            return 0
+            _known_hosts_real -- "$cur"
+            return
             ;;
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '-iL -iR --exclude --excludefile -sL -sP -PN
+        COMPREPLY=( $(compgen -W '-iL -iR --exclude --excludefile -sL -sP -PN
             -PS -PA -PU -PY -PE -PP -PM -PO -n -R --dns-servers --system-dns
             --traceroute -sS -sT -sA -sW -sM -sU -sN -sF -sX --scanflags -sI
             -sY -sZ -sO -b -p -F -r --top-ports --port-ratio -sV
@@ -40,11 +40,11 @@ _nmap()
             -oA -v -d --reason --open --packet-trace --iflist --log-errors
             --append-output --resume --stylesheet --webxml --no-stylesheet -6
             -A --datadir --send-eth --send-ip --privilege--unprivileged -V
-            -h' -- "$cur" ) )
+            -h' -- "$cur") )
     else
-        _known_hosts_real "$cur"
+        _known_hosts_real -- "$cur"
     fi
 } &&
 complete -F _nmap nmap
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

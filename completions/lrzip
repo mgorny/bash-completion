@@ -8,46 +8,45 @@ _lrzip()
     local xspec="*.lrz"
 
     case $prev in
-        -w|-S|-V|-h|-'?')
-            return 0
+        -*@([wSm]|[Vh?]*))
+            return
             ;;
-        -d)
+        -*d)
             xspec="!"$xspec
             ;;
-        -o)
+        -*o)
             _filedir
-            return 0
+            return
             ;;
-        -O)
+        -*O)
             _filedir -d
-            return 0
+            return
             ;;
-        -L)
-            COMPREPLY=( $( compgen -W '{1..9}' -- "$cur" ) )
-            return 0
+        -*L)
+            COMPREPLY=( $(compgen -W '{1..9}' -- "$cur") )
+            return
             ;;
-        -N)
-            COMPREPLY=( $( compgen -W '{-20..19}' -- "$cur" ) )
-            return 0
+        -*N)
+            COMPREPLY=( $(compgen -W '{-20..19}' -- "$cur") )
+            return
             ;;
-        -p)
-            COMPREPLY=( $( compgen -W "{1..$(_ncpus)}" -- "$cur" ) )
-            return 0
+        -*p)
+            COMPREPLY=( $(compgen -W "{1..$(_ncpus)}" -- "$cur") )
+            return
             ;;
     esac
 
-    _expand || return 0
-
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
-        return 0
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
+        return
     fi
+
+    _tilde "$cur" || return
 
     local IFS=$'\n'
     compopt -o filenames
-    COMPREPLY=( $( compgen -f -X "$xspec" -- "$cur" ) \
-        $( compgen -d -- "$cur" ) )
+    COMPREPLY=( $(compgen -f -X "$xspec" -- "$cur") $(compgen -d -- "$cur") )
 } &&
 complete -F _lrzip lrzip
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

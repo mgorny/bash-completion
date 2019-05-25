@@ -1,0 +1,5 @@
+black>=19.3b0;python_version>"3.6"
+pexpect>=4
+pytest>=3.5
+pytest-xdist
+typing;python_version<"3.5"

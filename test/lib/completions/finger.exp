@@ -11,22 +11,6 @@ proc teardown {} {
 setup
 
 
-set test "Tab should complete usernames"
-# Build string list of usernames
-set users {}
-foreach u [exec bash -c "compgen -A user"] {
-    lappend users $u
-}
-assert_complete $users "finger " $test
-
-
-sync_after_int
-
-
-set test "Tab should complete partial username"
-assert_complete_partial [exec bash -c "compgen -A user"] "finger" "" $test -nospace
-
-
 sync_after_int
 
 

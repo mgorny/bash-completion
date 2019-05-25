@@ -18,7 +18,7 @@ _kill()
     if [[ $cword -eq 1 && "$cur" == -* ]]; then
         # return list of available signals
         _signals -
-        COMPREPLY+=( $( compgen -W "-s -l" -- "$cur" ) )
+        COMPREPLY+=( $(compgen -W "-s -l" -- "$cur") )
     else
         # return list of available PIDs
         _pids
@@ -26,4 +26,4 @@ _kill()
 } &&
 complete -F _kill kill
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

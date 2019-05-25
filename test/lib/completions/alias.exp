@@ -15,15 +15,6 @@ proc teardown {} {
 setup
 
 
-set test "Tab should complete alias"
-    # Try completion
-set cmd "alias "
-assert_complete {bar foo} $cmd $test
-
-
-sync_after_int
-
-
 set test "Tab should complete alias at cursor position"
     # Try completion
 set cmd "alias foo"
@@ -35,8 +26,6 @@ expect {
     -re /@ { unresolved "$test" }
     default { unresolved "$test" }
 }
-
-
 sync_after_int
 
 

@@ -6,26 +6,24 @@ _xzdec()
     _init_completion -s || return
 
     case $prev in
-        -M|--memory)
-            # argument required but no completions available
-            return 0
+        --memory|-!(-*)M)
+            return
             ;;
-        -h|--help|-V|--version)
-            # all other arguments are noop with these
-            return 0
+        --help|--version|-!(-*)[hV])
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
         [[ $COMPREPLY == *= ]] && compopt -o nospace
-        return 0
+        return
     fi
 
     _filedir xz # no lzma support here as of xz 4.999.9beta
 } &&
 complete -F _xzdec xzdec
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

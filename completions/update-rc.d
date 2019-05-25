@@ -17,15 +17,15 @@ _update_rc_d()
     options=( -f -n )
 
     if [[ $cword -eq 1 || "$prev" == -* ]]; then
-    valid_options=( $( \
-        tr " " "\n" <<<"${words[@]} ${options[@]}" \
-        | sed -ne "/$( sed "s/ /\\|/g" <<<"${options[@]}" )/p" \
+    valid_options=( $(\
+        tr " " "\n" <<<"${words[*]} ${options[*]}" \
+        | command sed -ne "/$(command sed "s/ /\\|/g" <<<"${options[*]}")/p" \
         | sort | uniq -u \
         ) )
-    COMPREPLY=( $( compgen -W '${options[@]} ${services[@]}' \
-        -X '$( tr " " "|" <<<${words[@]} )' -- "$cur" ) )
-    elif [[ "$prev" == ?($( tr " " "|" <<<${services[@]} )) ]]; then
-        COMPREPLY=( $( compgen -W 'remove defaults start stop' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '${options[@]} ${services[@]}' \
+        -X '$(tr " " "|" <<<${words[@]})' -- "$cur") )
+    elif [[ "$prev" == ?($(tr " " "|" <<<"${services[*]}")) ]]; then
+        COMPREPLY=( $(compgen -W 'remove defaults start stop' -- "$cur") )
     elif [[ "$prev" == defaults && "$cur" == [0-9] ]]; then
         COMPREPLY=( 0 1 2 3 4 5 6 7 8 9 )
     elif [[ "$prev" == defaults && "$cur" == [sk]?([0-9]) ]]; then
@@ -53,13 +53,11 @@ _update_rc_d()
             COMPREPLY=()
         fi
     elif [[ "$prev" == "." ]]; then
-        COMPREPLY=( $( compgen -W "start stop" -- "$cur" ) )
+        COMPREPLY=( $(compgen -W "start stop" -- "$cur") )
     else
         COMPREPLY=()
     fi
-
-    return 0
 } &&
 complete -F _update_rc_d update-rc.d
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

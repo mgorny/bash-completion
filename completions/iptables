@@ -7,49 +7,40 @@ _iptables()
 
     local table chain='s/^Chain \([^ ]\{1,\}\).*$/\1/p'
 
-    if [[ ${words[@]} == *-t\ *filter* ]]; then
-        table="-t filter"
-    elif [[ ${words[@]} == *-t\ *nat* ]]; then
-        table="-t nat"
-    elif [[ ${words[@]} == *-t\ *mangle* ]]; then
-        table="-t mangle"
-    fi
+    [[ "${words[*]}" =~ [[:space:]]-(t|-table=?)[[:space:]]*([^[:space:]]+) ]] \
+        && table="-t ${BASH_REMATCH[2]}"
 
     case $prev in
     -*[AIDRPFXLZ])
-        COMPREPLY=( $( compgen -W '`iptables $table -nL | \
-                sed -ne "s/^Chain \([^ ]\{1,\}\).*$/\1/p"`' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '`"$1" $table -nL 2>/dev/null | \
+                command sed -ne "s/^Chain \([^ ]\{1,\}\).*$/\1/p"`' -- "$cur") )
         ;;
     -*t)
-        COMPREPLY=( $( compgen -W 'nat filter mangle' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W 'nat filter mangle' -- "$cur") )
         ;;
     -j)
         if [[ "$table" == "-t filter" || -z "$table" ]]; then
-            COMPREPLY=( $( compgen -W 'ACCEPT DROP LOG ULOG REJECT
-                `iptables $table -nL | sed -ne "$chain" \
+            COMPREPLY=( $(compgen -W 'ACCEPT DROP LOG ULOG REJECT
+                `"$1" $table -nL 2>/dev/null | command sed -ne "$chain" \
                 -e "s/INPUT|OUTPUT|FORWARD|PREROUTING|POSTROUTING//"`' -- \
-                "$cur" ) )
+                "$cur") )
         elif [[ $table == "-t nat" ]]; then
-            COMPREPLY=( $( compgen -W 'ACCEPT DROP LOG ULOG REJECT MIRROR SNAT
-                DNAT MASQUERADE `iptables $table -nL | \
-                sed -ne "$chain" -e "s/OUTPUT|PREROUTING|POSTROUTING//"`' \
-                -- "$cur" ) )
+            COMPREPLY=( $(compgen -W 'ACCEPT DROP LOG ULOG REJECT MIRROR SNAT
+                DNAT MASQUERADE `"$1" $table -nL 2>/dev/null | \
+                command sed -ne "$chain" -e "s/OUTPUT|PREROUTING|POSTROUTING//"`' \
+                -- "$cur") )
         elif [[ $table == "-t mangle" ]]; then
-            COMPREPLY=( $( compgen -W 'ACCEPT DROP LOG ULOG REJECT MARK TOS
-                `iptables $table -nL | sed -ne "$chain" \
+            COMPREPLY=( $(compgen -W 'ACCEPT DROP LOG ULOG REJECT MARK TOS
+                `"$1" $table -nL 2>/dev/null | command sed -ne "$chain" \
                 -e "s/INPUT|OUTPUT|FORWARD|PREROUTING|POSTROUTING//"`' -- \
-                "$cur" ) )
+                "$cur") )
         fi
         ;;
     *)
         if [[ "$cur" == -* ]]; then
-            COMPREPLY=( $( compgen -W '--in-interface --out-interface --source
-                --destination --protocol --fragment --match --append --delete
-                --insert --replace --list --flush --zero --new --delete-chain
-                --policy --rename-chain --proto --source --destination
-                --in-interface --jump --match --numeric --out-interface --table
-                --verbose --line-numbers --exact --fragment --modprobe
-                --set-counters --version' -- "$cur" ) )
+            COMPREPLY=( $(compgen -W '$("$1" --help 2>&1 |
+                command sed -e "s/^\[\!\]//" | _parse_help -)' -- "$cur") )
+            [[ $COMPREPLY == *= ]] && compopt -o nospace
         fi
         ;;
     esac
@@ -57,4 +48,4 @@ _iptables()
 } &&
 complete -F _iptables iptables
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

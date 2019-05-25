@@ -8,15 +8,15 @@ _snarf()
     case $prev in
         -i)
             _available_interfaces -a
-            return 0
+            return
             ;;
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_usage "$1" )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(_parse_usage "$1")' -- "$cur") )
     fi
 
 } &&
 complete -F _snarf filesnarf mailsnarf msgsnarf
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

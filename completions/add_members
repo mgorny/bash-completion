@@ -8,19 +8,19 @@ _add_members()
     case $prev in
         -r|-d|--regular-members-file|--digest-members-file)
             _filedir
-            return 0
+            return
             ;;
         -w|-a|--welcome-msg|--admin-notify)
-            COMPREPLY=( $( compgen -W 'y n' -- "$cur" ) )
-            return 0
+            COMPREPLY=( $(compgen -W 'y n' -- "$cur") )
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--regular-members-file --digest-members-file
-            --welcome-msg --admin-notify --help' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--regular-members-file --digest-members-file
+            --welcome-msg --admin-notify --help' -- "$cur") )
     else
         _xfunc list_lists _mailman_lists
     fi
@@ -28,4 +28,4 @@ _add_members()
 } &&
 complete -F _add_members add_members
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

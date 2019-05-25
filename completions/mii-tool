@@ -6,22 +6,22 @@ _mii_tool()
     _init_completion -s || return
 
     case $prev in
-        -F|--force)
-            COMPREPLY=( $( compgen -W '100baseTx-FD 100baseTx-HD 10baseT-FD
-                10baseT-HD' -- "$cur" ) )
-            return 0
+        --force|-!(-*)F)
+            COMPREPLY=( $(compgen -W '100baseTx-FD 100baseTx-HD 10baseT-FD
+                10baseT-HD' -- "$cur") )
+            return
             ;;
-        -A|--advertise)
-            COMPREPLY=( $( compgen -W '100baseT4 100baseTx-FD 100baseTx-HD
-                10baseT-FD 10baseT-HD' -- "$cur" ) )
-            return 0
+        --advertise|-!(-*)A)
+            COMPREPLY=( $(compgen -W '100baseT4 100baseTx-FD 100baseTx-HD
+                10baseT-FD 10baseT-HD' -- "$cur") )
+            return
             ;;
     esac
 
-    $split && return 0
+    $split && return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
         [[ $COMPREPLY == *= ]] && compopt -o nospace
     else
         _available_interfaces -a
@@ -29,4 +29,4 @@ _mii_tool()
 } &&
 complete -F _mii_tool -o default mii-tool
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

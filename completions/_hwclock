@@ -19,8 +19,8 @@ _hwclock()
     esac
 
     COMPREPLY=(
-        $( PATH="$PATH:/sbin" compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+        $(PATH="$PATH:/sbin" compgen -W '$(_parse_help "$1")' -- "$cur") )
 } &&
 complete -F _hwclock hwclock
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

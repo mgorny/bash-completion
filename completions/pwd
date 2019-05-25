@@ -11,10 +11,10 @@ _pwd()
             ;;
     esac
 
-    COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
     [[ $COMPREPLY ]] || \
-        COMPREPLY=( $( compgen -W '$( _parse_usage "$1" )' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '$(_parse_usage "$1")' -- "$cur") )
 } &&
 complete -F _pwd pwd
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

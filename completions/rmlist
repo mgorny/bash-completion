@@ -6,7 +6,7 @@ _rmlist()
     _init_completion || return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--archives --help' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--archives --help' -- "$cur") )
     else
         _xfunc list_lists _mailman_lists
     fi
@@ -14,4 +14,4 @@ _rmlist()
 } &&
 complete -F _rmlist rmlist
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

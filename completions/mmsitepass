@@ -6,10 +6,10 @@ _mmsitepass()
     _init_completion || return
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W '--listcreator --help' -- "$cur" ) )
+        COMPREPLY=( $(compgen -W '--listcreator --help' -- "$cur") )
     fi
 
 } &&
 complete -F _mmsitepass mmsitepass
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

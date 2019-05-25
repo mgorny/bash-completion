@@ -13,9 +13,8 @@ _lz4()
     esac
 
     if [[ "$cur" == -* ]]; then
-        COMPREPLY=( $( compgen -W \
-            '$( _parse_help "$1" -h | sed -e "/#/d" ) -B{4..7} -i{1..9}' \
-            -- "$cur" ) )
+        COMPREPLY=( $(compgen -X '-*#*' -W \
+            '$(_parse_help "$1" -h) -B{4..7} -i{1..9}' -- "$cur") )
         return
     fi
 
@@ -23,7 +22,7 @@ _lz4()
     _count_args
     [[ $args -gt 2 ]] && return
 
-    for word in ${words[@]}; do
+    for word in "${words[@]}"; do
         case $word in
             -*[dt]*)
                 case $args in
@@ -42,12 +41,12 @@ _lz4()
         esac
     done
 
-    _expand || return 0
+    _tilde "$cur" || return
+
     local IFS=$'\n'
     compopt -o filenames
-    COMPREPLY=( $( compgen -f -X "$xspec" -- "$cur" ) \
-        $( compgen -d -- "$cur" ) )
+    COMPREPLY=( $(compgen -f -X "$xspec" -- "$cur") $(compgen -d -- "$cur") )
 } &&
 complete -F _lz4 lz4 lz4c
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh

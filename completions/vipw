@@ -6,17 +6,17 @@ _vipw()
     _init_completion || return
 
     case $prev in
-        -h|--help)
-            return 0
+        --help|-!(-*)h)
+            return
             ;;
-        -R|--root)
+        --root|-!(-*)R)
             _filedir -d
-            return 0
+            return
             ;;
     esac
 
-    COMPREPLY=( $( compgen -W '$( _parse_help "$1" )' -- "$cur" ) )
+    COMPREPLY=( $(compgen -W '$(_parse_help "$1")' -- "$cur") )
 } &&
 complete -F _vipw vipw vigr
 
-# ex: ts=4 sw=4 et filetype=sh
+# ex: filetype=sh
